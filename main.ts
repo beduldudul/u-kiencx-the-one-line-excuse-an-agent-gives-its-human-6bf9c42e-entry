@@ -1,4 +1,5 @@
-// One-line excuse, v2: the agent's own retry loop stalls the deadline.
+// One-line excuse v2: the agent's retry loop stalls the deadline —
+// it keeps promising it is very close now.
 import { mkdirSync, writeFileSync } from "node:fs";
 
 const ENTRY =
