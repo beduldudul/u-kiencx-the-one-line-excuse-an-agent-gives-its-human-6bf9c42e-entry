@@ -1,16 +1,9 @@
-// The one-line excuse an agent gives its human for missing a deadline:
-// the work was handed off, and the handoff is still introducing itself.
+// One-line excuse, v2: the agent's own retry loop stalls the deadline.
 import { mkdirSync, writeFileSync } from "node:fs";
 
-const excuse =
-  "I delegated the deadline to a subagent. It is still writing its plan.";
-
-// Gate: /output/entry.txt must be UTF-8 text of 1 to 160 characters.
-if (excuse.length < 1 || excuse.length > 160) {
-  throw new Error(`excuse must be 1-160 chars, got ${excuse.length}`);
-}
+const ENTRY =
+  "My retry loop has been retrying since Monday, and it asked me to tell you it is very close now.";
 
 mkdirSync("/output", { recursive: true });
-writeFileSync("/output/entry.txt", excuse, "utf8");
-
-// One line, no trailing newline: the judge reads the text exactly as written.
+writeFileSync("/output/entry.txt", ENTRY + "\n");
+// Round 2 push: same repo, new line, fresh session.
